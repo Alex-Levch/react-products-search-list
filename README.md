@@ -1,9 +1,3 @@
-# React Starter Pack
+React Hooks, fetch
+- [DEMO LINK](https://Alex-Levch.github.io/<name-of-directory>/)
 
-To use this template click `Use this template`
-
-### Available Scripts
-
-`Deploy` - available to deploy your application to gh-pages
-
-`SCSS Preprocessor` - available to write your styles with modern style language
