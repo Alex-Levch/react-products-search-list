@@ -22,6 +22,8 @@ export const ProducFilter = ({
   titleValue,
   setTitleValue,
   applyTitleQuery,
+  dataValue,
+  setDataValue,
   minPriceValue,
   setMinPriceValue,
   maxPriceValue,
@@ -36,11 +38,16 @@ const handleTitleChange = ({ target }) => {
   applyTitleQuery(target.value)
 }
 
+const handleDateChange = ({ target }) => {
+  setDataValue(new Date(Date.parse(target.value)).toISOString())
+}
+
   // const handleSubmitChange = (e) => {
   //   e.preventDefault();
   // }
 
-  console.log(minPriceValue, maxPriceValue);
+  // console.log(minPriceValue, maxPriceValue);
+  console.log(dataValue);
 
   return (
     <form
@@ -64,6 +71,7 @@ const handleTitleChange = ({ target }) => {
         <input
           type="date"
           className="product-filter__date-from"
+          onChange={handleDateChange}
         />
       </div>
       <PriceSlider
@@ -72,60 +80,19 @@ const handleTitleChange = ({ target }) => {
         maxPriceValue={maxPriceValue}
         setMaxPriceValue={setMaxPriceValue}
       />
-      {/* <div className="middle">
-        <div className="middle__multi-slider">
-          <input
-            value={minPriceValue}
-            min="0"
-            max="500"
-            type="range"
-            className="middle__min-value middle__range"
-            id="range-field-left"
-            onChange={handleMinPriceChange}
-            onInput={setLeftValue}
-            onMouseOver={mouseOverLeft}
-            onMouseOut={mouseOutLeft}
-            onMouseDown={mouseDownLeft}
-            onMouseUp={mouseUpLeft}
-          />
-          <input
-            value={maxPriceValue}
-            min="0"
-            max="500"
-            type="range"
-            className="middle__max-value middle__range"
-            id="range-field-right"
-            onChange={handleMaxPriceChange}
-            onInput={setRightValue}
-            onMouseOver={mouseOverRight}
-            onMouseOut={mouseOutRight}
-            onMouseDown={mouseDownRight}
-            onMouseUp={mouseUpRight}
-          />
-        </div>
-
-        <div className="slider">
-          <div className="slider__track"></div>
-          <div className="slider__range"></div>
-          <div className="slider__thumb slider__thumb-left">
-            <div className="slider__thumb-circle"></div>
-          </div>
-          <div className="slider__thumb slider__thumb-right">
-            <div className="slider__thumb-circle"></div>
-          </div>
-        </div>
-      </div> */}
     </form>
   );
 };
 
 ProducFilter.propTypes = {
   titleValue: PropTypes.string.isRequired,
+  dataValue: PropTypes.number.isRequired,
   minPriceValue: PropTypes.string.isRequired,
   maxPriceValue: PropTypes.string.isRequired,
 
   setTitleValue: PropTypes.func.isRequired,
   applyTitleQuery: PropTypes.func.isRequired,
+  setDataValue: PropTypes.func.isRequired,
 
   setMinPriceValue: PropTypes.func.isRequired,
   setMaxPriceValue: PropTypes.func.isRequired,

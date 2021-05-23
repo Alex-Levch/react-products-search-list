@@ -27,6 +27,7 @@ export const PriceSlider = ({
   const thumbLeft = document.querySelector(".slider__thumb-left");
   const thumbRight = document.querySelector(".slider__thumb-right");
   const range = document.querySelector(".slider__range");
+  const track = document.querySelector(".slider__track")
 
 const setLeftValue = () => {
   const _this = inputLeft,
@@ -64,10 +65,14 @@ const mouseOutLeft = () => {
 
 const mouseDownLeft = () => {
   thumbLeft.classList.add("active");
+  range.classList.add("range-active");
+  track.classList.add("track-active");
 };
 
 const mouseUpLeft = () => {
   thumbLeft.classList.remove("active");
+  range.classList.remove("range-active");
+  track.classList.remove("track-active");
 };
 
 const mouseOverRight = () => {
@@ -80,10 +85,14 @@ const mouseOutRight = () => {
 
 const mouseDownRight = () => {
   thumbRight.classList.add("active");
+  range.classList.add("range-active");
+  track.classList.add("track-active");
 };
 
 const mouseUpRight = () => {
   thumbRight.classList.remove("active");
+  range.classList.remove("range-active");
+  track.classList.remove("track-active");
 };
 
   return (

@@ -1,5 +1,4 @@
 
-
 .products {
 
   &__list {
@@ -16,14 +15,22 @@
     padding: 5px;
 
     &__title {
+      margin: 0;
       font-size: 20px;
     }
 
-    &__price {
+    &__text {
+      margin: 15px 0;
 
     }
 
+    &__price {
+    }
+
     &__thumbnail {
+    }
+
+    &__thumbnail-date {
 
     }
   }

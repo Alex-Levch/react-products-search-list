@@ -3,11 +3,9 @@ import { getProducts, BASE_URL } from './components/api/api';
 import productsFromServer from './components/api/products.json';
 import { Form } from './components/Form';
 import { ProducFilter } from './components/ProductFilter';
-import { ProductList } from './components/ProductsList';
-
+import { ProductsList } from './components/ProductsList';
 
 import './App.scss';
-import { ProductsList } from './components/ProductsList/ProductsList';
 
 const debounce = (f, delay) => {
   let timerId;
@@ -25,7 +23,7 @@ export const App = () => {
   const [errorMessage, setErrorMessage] = useState(true);
   const [titleValue, setTitleValue] = useState('');
   const [appliedQuery, setAppliedQuery] = useState('');
-  // const [dataValue, setDataValue] = useState('');
+  const [dataValue, setDataValue] = useState(0);
   const [minPriceValue, setMinPriceValue] = useState('120');
   const [maxPriceValue, setMaxPriceValue] = useState('370');
 
@@ -52,11 +50,13 @@ export const App = () => {
         .includes(appliedQuery.toLocaleLowerCase())
   );
 
-  const priceFilter = product => (
-    product.price > +priceValue
-    ? true
-    : false
-  );
+  const priceFilter = product => {
+    if ((product.price >= +minPriceValue)
+      && (product.price <= +maxPriceValue)) {
+        return true;
+      }
+  }
+
 
   const filteredByTitleProducts = useMemo(() => {
     return products
@@ -91,6 +91,8 @@ export const App = () => {
       setTitleValue={setTitleValue}
       titleValue={titleValue}
       applyTitleQuery={applyTitleQuery}
+      setDataValue={setDataValue}
+      dataValue={dataValue}
       minPriceValue={minPriceValue}
       setMinPriceValue={setMinPriceValue}
       maxPriceValue={maxPriceValue}
