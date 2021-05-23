@@ -25,8 +25,9 @@ export const App = () => {
   const [errorMessage, setErrorMessage] = useState(true);
   const [titleValue, setTitleValue] = useState('');
   const [appliedQuery, setAppliedQuery] = useState('');
-  const [priceValue, setPriceValue] = useState('');
   // const [dataValue, setDataValue] = useState('');
+  const [minPriceValue, setMinPriceValue] = useState('120');
+  const [maxPriceValue, setMaxPriceValue] = useState('370');
 
   useEffect(() => {
     setProducts([...productsFromServer])
@@ -36,14 +37,13 @@ export const App = () => {
     // loadProductsFromServer();
   // }, []);
 
-  const visibleProducts = useMemo(() => products.filter((product) => {
-    const { titleValue, priceValue, dataValue } = activeSearchParameters;
-    const { title, price, date} = product;
-  }), [])
+  // const visibleProducts = useMemo(() => products.filter((product) => {
+  //   const { titleValue, priceValue, dataValue } = activeSearchParameters;
+  //   const { title, price, date} = product;
+  // }), [])
 
   const applyTitleQuery = debounce(setAppliedQuery, 1000);
-
-  console.log(appliedQuery);
+  // const applyPriceQuery = debounce(setPriceValue, 1000);
 
   const titleFilter = product => (
     product.title === null
@@ -52,10 +52,27 @@ export const App = () => {
         .includes(appliedQuery.toLocaleLowerCase())
   );
 
+  const priceFilter = product => (
+    product.price > +priceValue
+    ? true
+    : false
+  );
+
   const filteredByTitleProducts = useMemo(() => {
     return products
     .filter(titleFilter);
   }, [appliedQuery])
+
+  // const filteredByPriceProducts = useMemo(() => {
+
+  //   if (filteredByTitleProducts.length) {
+  //     return filteredByTitleProducts
+  //     .filter(priceFilter)
+  //   }
+
+  //   return products
+  //     .filter(priceFilter)
+  // }, [priceValue])
 
   return (
   <div className="app">
@@ -74,8 +91,10 @@ export const App = () => {
       setTitleValue={setTitleValue}
       titleValue={titleValue}
       applyTitleQuery={applyTitleQuery}
-      setPriceValue={setPriceValue}
-      priceValue={priceValue}
+      minPriceValue={minPriceValue}
+      setMinPriceValue={setMinPriceValue}
+      maxPriceValue={maxPriceValue}
+      setMaxPriceValue={setMaxPriceValue}
     />
     <ProductsList
       products={filteredByTitleProducts.length ? filteredByTitleProducts : products}

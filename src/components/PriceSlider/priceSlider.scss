@@ -1,0 +1,151 @@
+.price-container {
+}
+
+.middle {
+  position: relative;
+  padding-left: 10px;
+  top: 20px;
+  width: 90%;
+  max-width: 250px;
+
+
+  &__multi-slider {
+    position: relative;
+
+  }
+
+  &__min-value {
+
+  }
+
+  &__max-value {
+
+  }
+}
+
+.priceValues {
+  width: 220px;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+
+
+  &__label {
+    color: #0f57aa;
+  }
+
+  &__value {
+    display: block;
+    width: 50px;
+    height: 40px;
+    border: 3px solid #2b8d5c;
+    color: rgb(99, 104, 104);
+    font-size: 16px;
+    font-weight: 700;
+    text-align: center;
+    padding-top: 3px;
+    background-color: rgb(238, 236, 236);
+    border-radius: 6px;
+  }
+
+  &__max-price-value {
+
+  }
+}
+
+.slider {
+  position: relative;
+  top: 5px;
+  z-index: 1;
+  height: 5px;
+  margin: 0 15px;
+
+  &__track {
+    position: absolute;
+    z-index: 1;
+    left: 0;
+    right: 0;
+    top: 0;
+    bottom: 0;
+    border-radius: 5px;
+    background-color: #909695;
+    border: 1px solid #000;
+  }
+
+  &__range {
+    position: absolute;
+    z-index: 2;
+    left: 25%;
+    right: 25%;
+    top: 0;
+    bottom: 0;
+    border-radius: 5px;
+    background-color: #2b8d5c;
+    border: 1px dashed #000;
+  }
+
+  &__thumb {
+    position: absolute;
+    top: 0;
+    z-index: 3;
+    width: 25px;
+    height: 25px;
+    border-radius: 50%;
+    border: 1px dashed #000;
+    background-color: #2b8d5c;
+    box-shadow: 0 0 0 0 rgba(98, 0, 238, .1);
+    transition: box-shadow 0.3s ease-in-out;
+    cursor: pointer;
+  }
+
+  &__thumb.hover {
+    box-shadow: 0 0 0 5px #2b8d5c67;
+
+  }
+
+  &__thumb.active {
+    box-shadow: 0 0 0 10px #24a78b;
+  }
+
+  &__thumb-left {
+    left: 25%;
+    transform: translate(-15px, -10px);
+  }
+
+  &__thumb-right {
+    right: 25%;
+    transform: translate(15px, -10px);
+  }
+
+  &__thumb-circle {
+    position: absolute;
+    top: 7px;
+    right: 7px;
+    width: 10px;
+    height: 10px;
+    border-radius: 50%;
+    border: 1px dotted;
+    background-color: rgb(26, 173, 149);
+  }
+}
+
+input[type=range] {
+  position: absolute;
+  pointer-events: none;
+  -webkit-appearance: none;
+  z-index: 2;
+  height: 10px;
+  width: 100%;
+  opacity: 0;
+
+}
+
+input[type=range]::-webkit-slider-thumb {
+  pointer-events: all;
+  width: 30px;
+  height: 30px;
+  border-radius: 0;
+  border: 0 none;
+  background-color: red;
+  -webkit-appearance: none;
+}
