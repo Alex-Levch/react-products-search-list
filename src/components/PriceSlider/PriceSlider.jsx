@@ -27,7 +27,7 @@ export const PriceSlider = ({
   const thumbLeft = document.querySelector(".slider__thumb-left");
   const thumbRight = document.querySelector(".slider__thumb-right");
   const range = document.querySelector(".slider__range");
-  const track = document.querySelector(".slider__track")
+  const track = document.querySelector(".slider__track");
 
 const setLeftValue = () => {
   const _this = inputLeft,
@@ -40,6 +40,10 @@ const setLeftValue = () => {
 
   thumbLeft.style.left = `${percent }%`;
   range.style.left = `${percent}%`;
+
+  parseInt(_this.value) >= parseInt(_this.max) - 20
+  ? _this.style.zIndex = 4
+  : _this.style.zIndex = 2;
 };
 
 const setRightValue = () => {

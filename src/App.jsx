@@ -57,7 +57,6 @@ export const App = () => {
       }
   }
 
-
   const filteredByTitleProducts = useMemo(() => {
     return products
     .filter(titleFilter);

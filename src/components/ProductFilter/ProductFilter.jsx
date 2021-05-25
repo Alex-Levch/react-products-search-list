@@ -39,8 +39,10 @@ const handleTitleChange = ({ target }) => {
 }
 
 const handleDateChange = ({ target }) => {
-  setDataValue(new Date(Date.parse(target.value)).toISOString())
+  setDataValue(Date.parse(target.value))
 }
+
+// etDataValue(new Date(Date.parse(target.value)).toISOString())
 
   // const handleSubmitChange = (e) => {
   //   e.preventDefault();
